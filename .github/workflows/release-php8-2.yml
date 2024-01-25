@@ -1,11 +1,11 @@
-name: Nginx 8.0
+name: Nginx 8.2
 
 on:
   workflow_dispatch:
 
 jobs:
   push:
-    name: "nginx-ptero:8.0"
+    name: "nginx-docker-container:8.2"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,4 +26,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/helkor-eu/nginx-docker-container:8.0
+            ghcr.io/helkor-eu/nginx-docker-container:8.2

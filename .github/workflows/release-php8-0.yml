@@ -5,7 +5,7 @@ on:
 
 jobs:
   push:
-    name: "nginx-ptero:8.0"
+    name: "nginx-docker-container:8.0"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
