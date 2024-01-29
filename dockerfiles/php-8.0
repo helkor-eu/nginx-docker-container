@@ -7,6 +7,7 @@ COPY --from=composer:latest  /usr/bin/composer /usr/bin/composer
 USER container
 ENV  USER container
 ENV HOME /home/container
+ENV PHP_VER 8
 
 WORKDIR /home/container
 COPY ./entrypoint.sh /entrypoint.sh
