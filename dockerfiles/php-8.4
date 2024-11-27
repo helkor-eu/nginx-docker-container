@@ -1,7 +1,8 @@
 FROM alpine:latest
 
 RUN apk --update --no-cache add curl ca-certificates nginx
-RUN apk add php84 php84-*
+RUN apk add php84
+RUN apk search -qe 'php84-*' | xargs apk add
 COPY --from=composer:latest  /usr/bin/composer /usr/bin/composer
 
 USER container
