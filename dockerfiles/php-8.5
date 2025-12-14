@@ -1,0 +1,16 @@
+FROM alpine:latest
+
+RUN apk --update --no-cache add curl ca-certificates nginx
+RUN apk add php85 php85-xml php85-exif php85-fpm php85-session php85-soap php85-openssl php85-gmp php85-pdo_odbc php85-dom php85-pdo php85-zip php85-mysqli php85-sqlite3 php85-pdo_pgsql php85-bcmath php85-gd php85-odbc php85-pdo_mysql php85-pdo_sqlite php85-gettext php85-xmlreader php85-bz2 php85-iconv php85-pdo_dblib php85-curl php85-ctype php85-phar php85-fileinfo php85-mbstring php85-tokenizer php85-simplexml php85-intl
+COPY --from=composer:latest  /usr/bin/composer /usr/bin/composer
+
+USER container
+ENV  USER container
+ENV HOME /home/container
+ENV PHP_VER 85
+
+WORKDIR /home/container
+COPY ./entrypoint.sh /entrypoint.sh
+
+
+CMD ["/bin/ash", "/entrypoint.sh"]
